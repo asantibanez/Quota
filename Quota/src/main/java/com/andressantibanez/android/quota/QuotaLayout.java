@@ -108,6 +108,14 @@ public class QuotaLayout extends LinearLayout{
         updateUi();
     }
 
+    public void setCompliedAmount(double compliedAmount) {
+        setAmounts(compliedAmount, mTotalAmount);
+    }
+
+    public void setTotalAmount(double totalAmount) {
+        setAmounts(mCompliedAmount, totalAmount);
+    }
+
 
     /**
      * Ui methods
