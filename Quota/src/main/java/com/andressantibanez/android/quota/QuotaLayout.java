@@ -2,6 +2,8 @@ package com.andressantibanez.android.quota;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -120,7 +122,6 @@ public class QuotaLayout extends LinearLayout{
     /**
      * Ui methods
      */
-
     private void updateUi() {
         //Set title
         mTitleView.setText(mTitle);
@@ -167,4 +168,95 @@ public class QuotaLayout extends LinearLayout{
         }
     }
 
+
+    /**
+     * Configuration change handling
+     */
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        Parcelable superState = super.onSaveInstanceState();
+
+        SavedState savedState = new SavedState(superState);
+        savedState.setTitle(mTitle);
+        savedState.setCompliedAmount(mCompliedAmount);
+        savedState.setTotalAmount(mTotalAmount);
+
+        return savedState;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        SavedState savedState = (SavedState) state;
+        super.onRestoreInstanceState(savedState.getSuperState());
+
+        mTitle = savedState.getTitle();
+        mCompliedAmount = savedState.getCompliedAmount();
+        mTotalAmount = savedState.getTotalAmount();
+
+        updateUi();
+    }
+
+    protected static class SavedState extends BaseSavedState {
+        String mTitle;
+        double mCompliedAmount;
+        double mTotalAmount;
+
+        public SavedState(Parcelable superState) {
+            super(superState);
+        }
+
+        public SavedState(Parcel in) {
+            super(in);
+            mTitle = in.readString();
+            mCompliedAmount = in.readDouble();
+            mTotalAmount = in.readDouble();
+        }
+
+        @Override
+        public void writeToParcel(Parcel out, int flags) {
+            super.writeToParcel(out, flags);
+            out.writeString(mTitle);
+            out.writeDouble(mCompliedAmount);
+            out.writeDouble(mTotalAmount);
+        }
+
+        public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
+            public SavedState createFromParcel(Parcel in) {
+                return new SavedState(in);
+            }
+            public SavedState[] newArray(int size) {
+                return new SavedState[size];
+            }
+        };
+
+        /**
+         * Setters
+         */
+        public void setTitle(String title) {
+            mTitle = title;
+        }
+
+        public void setCompliedAmount(double compliedAmount) {
+            mCompliedAmount = compliedAmount;
+        }
+
+        public void setTotalAmount(double totalAmount) {
+            mTotalAmount = totalAmount;
+        }
+
+
+        /**
+         * Getters
+         */
+        public String getTitle() {
+            return mTitle;
+        }
+        public double getCompliedAmount() {
+            return mCompliedAmount;
+        }
+
+        public double getTotalAmount() {
+            return mTotalAmount;
+        }
+    }
 }
