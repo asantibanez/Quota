@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/quota_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        tools:text="Title"/>
+
+    <TextView
+        android:id="@+id/quota_percentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textSize="16dp"
+        tools:text="50%"/>
+
+    <LinearLayout
+        android:id="@+id/quota_display"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:layout_below="@id/quota_title"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/complied_progress_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:background="#3c763d"/>
+
+        <View
+            android:id="@+id/total_amount_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:background="#a94442"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/complied_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quota_display"
+        android:layout_marginTop="8dp"
+        android:textSize="16dp"
+        tools:text="$ 40.00"/>
+
+    <TextView
+        android:id="@+id/total_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quota_display"
+        android:layout_marginTop="8dp"
+        android:layout_alignParentRight="true"
+        android:textSize="16dp"
+        tools:text="$ 80.00"/>
+
+</RelativeLayout>

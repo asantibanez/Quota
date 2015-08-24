@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Quota Widget -->
+    <declare-styleable name="QuotaLayout">
+        <attr name="quotaTitle" format="string"/>
+
+        <attr name="quotaCompliedColor" format="color"/>
+        <attr name="quotaTotalColor" format="color"/>
+
+        <attr name="quotaCompliedAmount" format="float"/>
+        <attr name="quotaTotalAmount" format="float"/>
+
+    </declare-styleable>
+
+</resources>

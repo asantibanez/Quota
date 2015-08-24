@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="app_name">Quota</string>
+
+    <!-- Default values -->
+    <color name="default_complied_color">#3c763d</color>
+    <color name="default_total_color">#a94442</color>
+
+
+</resources>
