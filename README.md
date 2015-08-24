@@ -1,7 +1,7 @@
 # Quota
 Quota widget for Android
 
-![Quota](https://github.com/asantibanez/Quota/blob/master/QuotaExample/captures/quota_preview.png)
+![Quota](https://github.com/asantibanez/Quota/blob/master/captures/quota_preview.png)
 
 To use, just add QuotaLayout to your XML layout file
 
