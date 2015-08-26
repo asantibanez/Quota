@@ -1,4 +1,7 @@
 # Quota
+
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Quota-green.svg?style=flat)](https://android-arsenal.com/details/1/2384)
+
 Quota widget for Android
 
 ![Quota](https://github.com/asantibanez/Quota/blob/master/captures/quota_preview.png)
