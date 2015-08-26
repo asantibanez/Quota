@@ -29,6 +29,7 @@ public class QuotaLayout extends LinearLayout{
     private double mCompliedPercentage;
     private int mCompliedColor;
     private int mTotalColor;
+    private int mVisibility;
 
 
     /**
@@ -63,6 +64,7 @@ public class QuotaLayout extends LinearLayout{
         mTitle = "";
         mCompliedAmount = 20;
         mTotalAmount = 100;
+        mVisibility = View.VISIBLE;
 
         //Get controls
         mTitleView = (TextView) findViewById(R.id.quota_title);
@@ -166,6 +168,9 @@ public class QuotaLayout extends LinearLayout{
             LayoutParams totalViewLayoutParams = new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, totalViewWeight);
             mTotalView.setLayoutParams(totalViewLayoutParams);
         }
+
+        //Set visibility
+        setVisibility(mVisibility);
     }
 
 
@@ -180,6 +185,7 @@ public class QuotaLayout extends LinearLayout{
         savedState.setTitle(mTitle);
         savedState.setCompliedAmount(mCompliedAmount);
         savedState.setTotalAmount(mTotalAmount);
+        savedState.setVisibility(mVisibility);
 
         return savedState;
     }
@@ -192,6 +198,7 @@ public class QuotaLayout extends LinearLayout{
         mTitle = savedState.getTitle();
         mCompliedAmount = savedState.getCompliedAmount();
         mTotalAmount = savedState.getTotalAmount();
+        mVisibility = savedState.getVisibility();
 
         updateUi();
     }
@@ -200,6 +207,7 @@ public class QuotaLayout extends LinearLayout{
         String mTitle;
         double mCompliedAmount;
         double mTotalAmount;
+        int mVisibility;
 
         public SavedState(Parcelable superState) {
             super(superState);
@@ -210,6 +218,7 @@ public class QuotaLayout extends LinearLayout{
             mTitle = in.readString();
             mCompliedAmount = in.readDouble();
             mTotalAmount = in.readDouble();
+            mVisibility = in.readInt();
         }
 
         @Override
@@ -218,6 +227,7 @@ public class QuotaLayout extends LinearLayout{
             out.writeString(mTitle);
             out.writeDouble(mCompliedAmount);
             out.writeDouble(mTotalAmount);
+            out.writeDouble(mVisibility);
         }
 
         public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
@@ -228,6 +238,7 @@ public class QuotaLayout extends LinearLayout{
                 return new SavedState[size];
             }
         };
+
 
         /**
          * Setters
@@ -244,6 +255,10 @@ public class QuotaLayout extends LinearLayout{
             mTotalAmount = totalAmount;
         }
 
+        public void setVisibility(int visibility) {
+            mVisibility = visibility;
+        }
+
 
         /**
          * Getters
@@ -257,6 +272,10 @@ public class QuotaLayout extends LinearLayout{
 
         public double getTotalAmount() {
             return mTotalAmount;
+        }
+
+        public int getVisibility() {
+            return mVisibility;
         }
     }
 }
