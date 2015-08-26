@@ -29,7 +29,6 @@ public class QuotaLayout extends LinearLayout{
     private double mCompliedPercentage;
     private int mCompliedColor;
     private int mTotalColor;
-    private int mVisibility;
 
 
     /**
@@ -64,7 +63,6 @@ public class QuotaLayout extends LinearLayout{
         mTitle = "";
         mCompliedAmount = 20;
         mTotalAmount = 100;
-        mVisibility = View.VISIBLE;
 
         //Get controls
         mTitleView = (TextView) findViewById(R.id.quota_title);
@@ -168,9 +166,6 @@ public class QuotaLayout extends LinearLayout{
             LayoutParams totalViewLayoutParams = new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, totalViewWeight);
             mTotalView.setLayoutParams(totalViewLayoutParams);
         }
-
-        //Set visibility
-        setVisibility(mVisibility);
     }
 
 
@@ -185,7 +180,7 @@ public class QuotaLayout extends LinearLayout{
         savedState.setTitle(mTitle);
         savedState.setCompliedAmount(mCompliedAmount);
         savedState.setTotalAmount(mTotalAmount);
-        savedState.setVisibility(mVisibility);
+        savedState.setVisibility(getVisibility());
 
         return savedState;
     }
@@ -198,9 +193,14 @@ public class QuotaLayout extends LinearLayout{
         mTitle = savedState.getTitle();
         mCompliedAmount = savedState.getCompliedAmount();
         mTotalAmount = savedState.getTotalAmount();
-        mVisibility = savedState.getVisibility();
 
         updateUi();
+
+        int visibility = savedState.getVisibility();
+        if(visibility == GONE) setVisibility(GONE);
+        if(visibility == VISIBLE) setVisibility(VISIBLE);
+        if(visibility == INVISIBLE) setVisibility(INVISIBLE);
+
     }
 
     protected static class SavedState extends BaseSavedState {
