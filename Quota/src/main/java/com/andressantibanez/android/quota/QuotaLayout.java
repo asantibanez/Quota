@@ -227,7 +227,7 @@ public class QuotaLayout extends LinearLayout{
             out.writeString(mTitle);
             out.writeDouble(mCompliedAmount);
             out.writeDouble(mTotalAmount);
-            out.writeDouble(mVisibility);
+            out.writeInt(mVisibility);
         }
 
         public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
