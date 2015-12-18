@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textSize="20dp"
+        android:textSize="16sp"
         tools:text="Title"/>
 
     <TextView
@@ -19,7 +19,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:textSize="16dp"
+        android:layout_alignParentEnd="true"
+        android:textSize="16sp"
         tools:text="50%"/>
 
     <LinearLayout
